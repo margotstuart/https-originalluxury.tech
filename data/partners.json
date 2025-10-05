@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "name":"Partner One", "logo":"images/uploads/partner-1.svg", "url":"https://example.com", "blurb":"Traceability tech partner", "featured": true },
+    { "name":"Partner Two", "logo":"images/uploads/partner-2.svg", "url":"https://example.com", "blurb":"Materials analytics", "featured": true }
+  ]
+}
