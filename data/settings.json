@@ -1,0 +1,9 @@
+{
+  "siteTitle": "ORIGINALLUXURY — DLIC",
+  "logo": "images/uploads/logo-placeholder.svg",
+  "colors": { "primary": "#0a0a0a", "secondary": "#111827", "accent": "#6b7280", "bg": "#fafafa", "text": "#0a0a0a" },
+  "heroTitle": "Dubai Luxury Innovation Center (DLIC)",
+  "heroText": "Your hub for transparency, traceability, and cross-industry collaboration. Visit, learn, and register for programs in one place.",
+  "trustStats": ["300+ stakeholders", "25+ tech partners", "20+ countries"],
+  "footerNote": "© ORIGINALLUXURY — All rights reserved"
+}
