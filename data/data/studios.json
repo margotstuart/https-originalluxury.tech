@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "name":"Media Studio", "image":"images/uploads/studio-media.jpg", "description":"Podcast, PR, and social recording studio.", "bookingLink":"#" },
+    { "name":"Jewellery Photo Studio", "image":"images/uploads/studio-photo.jpg", "description":"Macro, 360°, and video product capture.", "bookingLink":"#" }
+  ]
+}
