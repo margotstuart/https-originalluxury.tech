@@ -1,0 +1,13 @@
+{
+  "items": [
+    { "label":"Executive Learning", "cadence":"Cohorts" },
+    { "label":"Expert Sessions", "cadence":"Micro-conferences" },
+    { "label":"Materials Brownbag", "cadence":"Monthly" },
+    { "label":"Pitch Night", "cadence":"Quarterly" },
+    { "label":"Women in Diamonds", "cadence":"Quarterly" },
+    { "label":"Women in Sustainable Luxury", "cadence":"Biannual" },
+    { "label":"Luxury Summit", "cadence":"Annual" },
+    { "label":"Media Studio", "cadence":"On-demand" },
+    { "label":"Jewellery Photo Studio", "cadence":"On-demand" }
+  ]
+}
