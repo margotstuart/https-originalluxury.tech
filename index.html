@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ORIGINALLUXURY — DLIC</title>
+<meta name="description" content="Dubai Luxury Innovation Center (DLIC) — events, programs, members, studios, and DPP marketplace."/>
+<meta name="theme-color" content="#0a0a0a"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>:root{--primary:#0a0a0a;--secondary:#111827;--accent:#6b7280;--bg:#fafafa;--text:#0a0a0a}
+html,body{background:var(--bg);color:var(--text)}.btn-primary{background:var(--primary);color:#fff}.btn-outline{background:#fff;border:1px solid #d1d5db}.brand-pill{border:1px solid #d1d5db;background:#fff}.placeholder{background:#f3f4f6;border:1px dashed #d1d5db;color:#9ca3af}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect}=React;
+async function get(p,f){try{const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw 0;return await r.json()}catch(e){return f}}
+function App(){
+  const[s,setS]=useState(null),[st,setSt]=useState({items:[]}),[ev,setEv]=useState({items:[]}),[pr,setPr]=useState({items:[]}),[pa,setPa]=useState({items:[]}),[su,setSu]=useState({items:[]});
+  useEffect(()=>{(async()=>{const[S,ST,EV,PR,PA,SU]=await Promise.all([
+    get('data/settings.json',{}),get('data/steps.json',{items:[]}),get('data/events.json',{items:[]}),
+    get('data/programs.json',{items:[]}),get('data/partners.json',{items:[]}),get('data/studios.json',{items:[]})
+  ]);if(S.colors){for(const[k,v]of Object.entries(S.colors)){document.documentElement.style.setProperty('--'+(k==='text'?'text':k),v)}}setS(S);setSt(ST);setEv(EV);setPr(PR);setPa(PA);setSu(SU)})()},[]);
+  if(!s) return <div className="p-8">Loading…</div>;
+  return (<div className="min-h-screen">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {s.logo?<img src={s.logo} alt="Logo" className="h-8 w-8 rounded"/>:<div className="h-8 w-8 rounded placeholder flex items-center justify-center">Logo</div>}
+          <span className="font-semibold">{s.siteTitle||'ORIGINALLUXURY'}</span>
+        </div>
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          <a className="hover:underline" href="#dlic">DLIC</a>
+          <a className="hover:underline" href="#events">Events</a>
+          <a className="hover:underline" href="#partners">Tech Partners</a>
+          <a className="hover:underline" href="#members">Members</a>
+          <a className="hover:underline" href="#marketplace">Marketplace</a>
+        </nav>
+        <div className="flex items-center gap-2">
+          <button className="px-3 py-1.5 text-sm rounded-full btn-outline">Sign In</button>
+          <button className="px-3 py-1.5 text-sm rounded-full btn-primary">Join</button>
+        </div>
+      </div>
+    </header>
+
+    <section id="dlic" className="border-b border-neutral-200 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">{s.heroTitle}</h1>
+          <p className="mt-3 text-neutral-600">{s.heroText}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#events" className="px-4 py-2 rounded-full btn-primary">View Events</a>
+            <a href="#how" className="px-4 py-2 rounded-full btn-outline">How Registration Works</a>
+            <a href="#studios" className="px-4 py-2 rounded-full btn-outline">Book a Studio</a>
+          </div>
+          <div className="mt-6 flex items-center gap-6 text-sm text-neutral-600">
+            {(s.trustStats||[]).map((t,i)=><span key={i}>{t}</span>)}
+          </div>
+        </div>
+        <div className="h-56 sm:h-72 rounded-2xl placeholder flex items-center justify-center">Hero visual / video</div>
+      </div>
+    </section>
+
+    <section id="how" className="bg-neutral-50 border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <h2 className="text-xl font-semibold">Registration in 3 steps</h2>
+        <div className="mt-4 grid md:grid-cols-3 gap-4">
+          {st.items.map((x,i)=>(
+            <div key={i} className="rounded-xl p-4 border border-dashed border-neutral-300 bg-white">
+              <div className="text-sm text-neutral-500">Step {i+1}</div>
+              <div className="mt-1 text-lg font-medium">{x.label}</div>
+              <div className="mt-2 h-14 rounded placeholder flex items-center justify-center">UI placeholder</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="events" className="bg-white border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-2xl font-semibold">Upcoming at DLIC</h2>
+          <a href="#" className="text-sm underline">View full calendar</a>
+        </div>
+        <div className="mt-6 grid md:grid-cols-3 gap-6">
+          {ev.items.map((e, idx) => (
+            <div key={idx} className="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-4">
+              <div className="h-28 rounded placeholder mb-3 flex items-center justify-center">Event image</div>
+              <div className="text-sm text-neutral-500">{e.type} • {e.location}</div>
+              <h3 className="mt-1 font-medium">{e.title}</h3>
+              <div className="text-sm text-neutral-600">{new Date(e.date).toLocaleDateString(undefined,{month:'short',day:'2-digit'})} · {e.time}</div>
+              <div className="mt-3 text-sm text-neutral-600">{e.price}</div>
+              <div className="mt-4 flex gap-2">
+                <button className="px-3 py-1.5 rounded-full btn-primary text-sm">Register</button>
+                <button className="px-3 py-1.5 rounded-full btn-outline text-sm">Add to Calendar</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" className="bg-neutral-50 border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <h2 className="text-xl font-semibold">Programs at a glance</h2>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {pr.items.map((p,i)=>(<span key={i} className="px-3 py-1.5 rounded-full brand-pill text-sm">{p.label} <span className="text-neutral-500">· {p.cadence}</span></span>))}
+        </div>
+      </div>
+    </section>
+
+    <section id="members" className="bg-white border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-2xl font-semibold">Members get more</h2>
+            <ul className="mt-3 space-y-2 text-neutral-700 text-sm">
+              <li>• Discounted pricing on events & classes (shown when signed in)</li>
+              <li>• Access to reports, templates, and replays</li>
+              <li>• Studio credits for Media & Jewellery Photo Studio</li>
+              <li>• Partner perks and priority seating</li>
+            </ul>
+            <div className="mt-5 flex gap-3">
+              <button className="px-4 py-2 rounded-full btn-primary">Join as a Member</button>
+              <button className="px-4 py-2 rounded-full btn-outline">Sign In</button>
+            </div>
+          </div>
+          <div className="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 p-4">
+            <div className="text-sm text-neutral-500">Example price comparison</div>
+            <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
+              <div className="p-3 rounded bg-white border border-neutral-200">Standard: AED 500</div>
+              <div className="p-3 rounded bg-white border border-neutral-200">Member: AED 350</div>
+              <div className="p-3 rounded bg-white border border-neutral-200">Standard: AED 750</div>
+              <div className="p-3 rounded bg-white border border-neutral-200">Member: AED 525</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="marketplace" className="bg-neutral-50 border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 className="text-2xl font-semibold">Digital Product Passports (DPP) → Marketplace</h2>
+          <p className="mt-2 text-neutral-700">Create DPPs free in the member-only DPP Studio. With one click, publish to the DPP Marketplace for verified storytelling—and sales. We take a 5% fee on completed sales.</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button className="px-4 py-2 rounded-full btn-primary">Open DPP Studio (Members)</button>
+            <button className="px-4 py-2 rounded-full btn-outline">Browse Marketplace</button>
+          </div>
+        </div>
+        <div className="h-48 rounded-2xl placeholder flex items-center justify-center">DPP viewer / product card placeholders</div>
+      </div>
+    </section>
+
+    <section id="partners" className="bg-white border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <h2 className="text-2xl font-semibold mb-4">Tech Partners</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {pa.items.filter(p=>p.featured!==false).map((p,i)=>(
+            <a key={i} href={p.url||'#'} className="rounded-xl p-4 border border-dashed border-neutral-300 bg-white flex items-center justify-center">
+              {p.logo?<img src={p.logo} alt={p.name} className="h-12"/>:<div className="h-12 w-12 placeholder"/>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="studios" className="bg-neutral-50 border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <h2 className="text-xl font-semibold">Studios</h2>
+        <div className="mt-4 grid md:grid-cols-2 gap-4">
+          {su.items.map((x,i)=>(
+            <div key={i} className="rounded-2xl p-4 border border-dashed border-neutral-300 bg-white">
+              <div className="text-sm text-neutral-500">{x.name}</div>
+              <div className="mt-2 h-20 rounded placeholder flex items-center justify-center">{x.image?<img src={x.image} alt={x.name} className="h-20 object-cover rounded"/>:'Image'}</div>
+              <p className="mt-2 text-sm text-neutral-700">{x.description}</p>
+              <a href={x.bookingLink||'#'} className="mt-3 inline-block px-3 py-1.5 rounded-full btn-primary text-sm">Book a Slot</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <footer className="bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-8 text-sm">
+        <div>{s.logo?<img src={s.logo} alt="Logo" className="h-8 w-8 rounded mb-2"/>:<div className="h-8 w-8 rounded placeholder mb-2"></div>}
+          <p className="text-neutral-600">ORIGINALLUXURY • Dubai Luxury Innovation Center</p></div>
+        <div className="grid grid-cols-2 gap-4">
+          <ul className="space-y-1 text-neutral-700"><li className="font-medium">DLIC</li><li>Events</li><li>Visit the Center</li><li>Speakers & Faculty</li></ul>
+          <ul className="space-y-1 text-neutral-700"><li className="font-medium">Members</li><li>Join / Sign In</li><li>DPP Studio</li><li>Marketplace</li></ul>
+        </div>
+        <div><div className="font-medium">Stay in the loop</div>
+          <form name="subscribe" method="POST" data-netlify="true" className="mt-2 flex gap-2">
+            <input type="hidden" name="form-name" value="subscribe" />
+            <input name="email" type="email" required placeholder="Email" className="px-3 py-2 rounded border border-neutral-300 w-full"/>
+            <button className="px-4 py-2 rounded btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div className="border-t border-neutral-200 py-4 text-xs text-neutral-500 text-center">{s.footerNote||"© ORIGINALLUXURY — All rights reserved"}</div>
+    </footer>
+  </div>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>
